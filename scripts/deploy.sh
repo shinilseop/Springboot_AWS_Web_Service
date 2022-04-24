@@ -3,11 +3,11 @@
 REPOSITORY=/home/ec2-user/app/step2
 PROJECT_NAME=Springboot_AWS_Web_Service
 
-echo "> 프로젝트 Build 시작"
-./gradlew build
-
-echo "> step2 디렉토리 이동"
-cd $REPOSITORY
+#echo "> 프로젝트 Build 시작"
+#./gradlew build
+#
+#echo "> step2 디렉토리 이동"
+#cd $REPOSITORY
 
 echo "> Build 파일 복사"
 cp $REPOSITORY/zip/*.jar $REPOSITORY/
@@ -35,6 +35,6 @@ chmod +x $JAR_NAME
 echo "> $JAR_NAME 실행"
 
 nohup java -jar \
-        -Dspring.config.location=classpath:/application.properties,classpath:/application-real.properties,/home/ec2-user/app/application-oauth.properties,/home/ec2-user/app/application-real-db.properties \
-        -Dspring.profiles.active=real \
-        $JAR_NAME > $REPOSITORY/nohup.out 2>&1 &
+    -Dspring.config.location=classpath:/application.properties,classpath:/application-real.properties,/home/ec2-user/app/application-oauth.properties,/home/ec2-user/app/application-real-db.properties \
+    -Dspring.profiles.active=real \
+    $JAR_NAME > $REPOSITORY/nohup.out 2>&1 &
