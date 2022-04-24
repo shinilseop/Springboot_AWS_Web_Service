@@ -52,7 +52,7 @@ jobs:
         shell: bash
         
       - name: Deploy File Clustering [cp deploy scripts]
-        run: cp scipts/*.sh before-deploy/
+        run: cp scripts/*.sh before-deploy/
         shell: bash
         
       - name: Deploy File Clustering [cp appspec.yml]
