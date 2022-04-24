@@ -3,11 +3,17 @@
 REPOSITORY=/home/ec2-user/app/step2
 PROJECT_NAME=Springboot_AWS_Web_Service
 
+echo "> 프로젝트 Build 시작"
+./gradlew build
+
+echo "> step2 디렉토리 이동"
+cd $REPOSITORY
+
 echo "> Build 파일 복사"
 cp $REPOSITORY/zip/*.jar $REPOSITORY/
 
 echo "> 현재 구동중인 애플리케이션 pid 확인"
-CURRENT_PID=$(pgrep -fl Springboot_AWS_Web_Sercvice | grep jar | awk '{print $1}')
+CURRENT_PID=$(pgrep -fl ${PROJECT_NAME} | grep jar | awk '{print $1}')
 
 echo "현재 구동중인 애플리케이션 pid: $CURRENT_PID"
 
