@@ -46,9 +46,26 @@ jobs:
         run: ./gradlew build
         shell: bash
 
+        
+      - name: Deploy File Clustering [make folder]
+        run: mkdir -p before-deploy
+        shell: bash
+        
+      - name: Deploy File Clustering [cp deploy scripts]
+        run: cp scripts/*.sh before-deploy/
+        shell: bash
+        
+      - name: Deploy File Clustering [cp appspec.yml]
+        run: cp appspec.yml before-deploy/
+        shell: bash
+        
+      - name: Deploy File Clustering [cp jar]
+        run: cp build/libs/*.jar before-deploy/
+        shell: bash
+
       ## AWS ADD
       - name: Make zip file
-        run: zip -r ./$GITHUB_SHA.zip .
+        run: zip -r ./$GITHUB_SHA.zip ./before-deploy/.
         shell: bash
         
       - name: Configure AWS credentials
